@@ -1,5 +1,5 @@
 //import React from 'react';
-import logo from '../../assets/Picture/logo.jpg'
+import logo from '../../assets/Picture/logos.png'
 
 
 
@@ -7,14 +7,14 @@ const NavSection = () => {
 
     const links = <>
 
-        <li className="text-xl font-semibold lg:text-white"><a>Home</a></li>
-        <li className="text-xl font-semibold lg:text-white"><a>Games</a></li>
-        <li className="text-xl font-semibold lg:text-white"><a>About</a></li>
-        <li className="text-xl font-semibold lg:text-white"><a>Support</a></li>
+        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>Home</a></li>
+        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>Games</a></li>
+        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>About</a></li>
+        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>Support</a></li>
 
     </>
     return (
-        <div className="w-11/12 mx-auto pt-1">
+        <div className="w-11/12 mx-auto mt-2">
 
             <div className="navbar">
                 <div className="navbar-start">
@@ -24,11 +24,19 @@ const NavSection = () => {
                         </div>
                         <ul
                             tabIndex="-1"
-                            className="menu menu-sm dropdown-content bg-white text-black rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-gray-400 text-black rounded-box z-1 mt-3 w-52 p-2 shadow">
                             {links}
                         </ul>
                     </div>
-                    <div><img className=' h-12 lg:h-15 bg-white' src={logo} alt="" /></div>
+                    <div className='flex cursor-pointer'>
+                        <div>
+                            <img className='w-13' src={logo} alt="" />
+                        </div>
+                        <div className='flex items-center'>
+                            <p className='font-bold text-[0.9rem] bg-linear-to-r from-[#2be9c8] to-[#e056fd] bg-clip-text text-transparent lg:text-[1.3rem] flex font-serif'>GAMES ZONE</p>
+                        </div>
+                    </div>
+
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

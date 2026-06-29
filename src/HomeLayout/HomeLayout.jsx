@@ -3,27 +3,27 @@
 import { Outlet } from "react-router";
 import Footer from "../Component/Footer/Footer";
 import NavSection from "../Component/NavSection/NavSection";
-import hero from "../assets/Picture/heros.jpg"
+import hero from "../assets/Picture/background.jpg"
 import './home.css'
 
 const HomeLayout = () => {
     return (
-        <div className="h-screen">
+        <div className="min-h-screen relative z-19">
 
-            <div
-                className="imgs z-0 absolute h-full w-full bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${hero})` }}
-            ></div>
+            <div className="imgs z-0 absolute min-h-svh border- w-full bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${hero})`, height:'100%' }}>                
+            </div>
 
 
-            <div className="relative flex flex-col z-20 h-screen border-white">
+            <div className="relative flex flex-col z-20 h-full border-white">
                 <nav>
                     <NavSection></NavSection>
                 </nav>
                 <main className="h-full flex-1">
                     <Outlet></Outlet>
+                    
                 </main>
-                <section>
+                <section className="">
                     <Footer></Footer>
                 </section>
             </div>

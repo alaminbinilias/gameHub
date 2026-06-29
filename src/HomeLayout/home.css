@@ -1,3 +1,4 @@
 .imgs{
-    filter: brightness(0.3);
+    filter: brightness(0.04);
+    height: 100svh;
 }

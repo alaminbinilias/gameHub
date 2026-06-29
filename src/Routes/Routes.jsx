@@ -2,7 +2,8 @@
 
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../HomeLayout/HomeLayout";
-import HeroSection from "../Component/HeroSection/HeroSection";
+//import HeroSection from "../Component/HeroSection/HeroSection";
+import DynamicSection from "../Component/DynamicSection/DynamicSection";
 
 const router=createBrowserRouter([
     {
@@ -11,7 +12,7 @@ const router=createBrowserRouter([
         children:[
             {
                 index:true,
-                Component:HeroSection
+                Component: DynamicSection
             }
         ]
     }
