@@ -64,8 +64,8 @@ const PopularSection = () => {
 
                 </div>
                 <div className="right-Section h-full pt-20">
-                    <div className="h-full aura border-2 border-white rounded-2xl px-10 lg:px-40">
-                        <div className="flex flex-col items-center w-full mt-3">
+                    <div className="h-full border-2 border-white rounded-2xl px-10 lg:px-40">
+                        <div className="flex flex-col items-center w-full mt-3 text-base-content">
                             <p className="px-3 text-center text-[#EAB938] mt-5 font-semibold border border-[#EAB938] rounded-4xl">Level up your inbox</p>
                             <p className="text-white text-center mt-5 font-semibold font-mono text-4xl lg:text-5xl">NEVER MISS A <span className="text-[#FF5A36]">DROP.</span></p>
                             <p className="text-center text-md lg:text-xl text-gray-400">GameZone weekly — reviews, leaks, and the news that actually matters, straight to your inbox every Thursday.</p>

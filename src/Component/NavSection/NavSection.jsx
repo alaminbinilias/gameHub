@@ -1,4 +1,5 @@
 //import React from 'react';
+import { NavLink } from 'react-router';
 import logo from '../../assets/Picture/logos.png'
 
 
@@ -7,8 +8,8 @@ const NavSection = () => {
 
     const links = <>
 
-        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>Home</a></li>
-        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>Games</a></li>
+        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><NavLink to='/'>Home</NavLink></li>
+        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><NavLink to='allgames'>Games</NavLink></li>
         <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>About</a></li>
         <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>Support</a></li>
 

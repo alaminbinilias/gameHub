@@ -15,13 +15,12 @@ const HomeLayout = () => {
             </div>
 
 
-            <div className="relative flex flex-col z-20 h-full border-white">
+            <div className="relative flex flex-col z-20 min-h-svh border-white">
                 <nav>
                     <NavSection></NavSection>
                 </nav>
                 <main className="h-full flex-1">
                     <Outlet></Outlet>
-                    
                 </main>
                 <section className="">
                     <Footer></Footer>
