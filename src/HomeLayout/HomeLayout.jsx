@@ -10,16 +10,16 @@ const HomeLayout = () => {
     return (
         <div className="min-h-screen relative z-19">
 
-            <div className="imgs z-0 absolute min-h-svh border- w-full bg-cover bg-center bg-no-repeat"
+            <div className="imgs z-0 absolute min-h-screen border- w-full bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${hero})`, height:'100%' }}>                
             </div>
 
 
-            <div className="relative flex flex-col z-20 min-h-svh border-white">
+            <div className=" h-screen relative  flex flex-col z-20">
                 <nav>
                     <NavSection></NavSection>
                 </nav>
-                <main className="h-full flex-1">
+                <main className="flex-1">
                     <Outlet></Outlet>
                 </main>
                 <section className="">

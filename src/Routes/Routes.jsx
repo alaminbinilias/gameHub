@@ -5,6 +5,7 @@ import HomeLayout from "../HomeLayout/HomeLayout";
 //import HeroSection from "../Component/HeroSection/HeroSection";
 import DynamicSection from "../Component/DynamicSection/DynamicSection";
 import AllGamesSection from "../Component/AllGamesSection/AllGamesSection";
+import LoginSection from "../Component/AuthenticationSection/LoginSection/LoginSection";
 
 const router=createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router=createBrowserRouter([
                 loader:()=>fetch("/GamesData/Data.json"),
                 HydrateFallback:()=><p>Loading...</p>,
                 Component:AllGamesSection           
+            },
+            {
+                path:'/login',
+                Component:LoginSection
             }
         ]
     }

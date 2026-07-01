@@ -1,7 +1,7 @@
 //import React from 'react';
 import { NavLink } from 'react-router';
 import logo from '../../assets/Picture/logos.png'
-
+import './Nav.css'
 
 
 const NavSection = () => {
@@ -21,7 +21,7 @@ const NavSection = () => {
                 <div className="navbar-start">
                     <div className="dropdown text-white">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white hover:text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                         </div>
                         <ul
                             tabIndex="-1"
@@ -29,23 +29,23 @@ const NavSection = () => {
                             {links}
                         </ul>
                     </div>
-                    <div className='flex cursor-pointer'>
+                    <NavLink to='/'><div className='flex cursor-pointer'>
                         <div>
                             <img className='w-13' src={logo} alt="" />
                         </div>
                         <div className='flex items-center'>
                             <p className='font-bold text-[0.9rem] bg-linear-to-r from-[#2be9c8] to-[#e056fd] bg-clip-text text-transparent lg:text-[1.3rem] flex font-serif'>GAMES ZONE</p>
                         </div>
-                    </div>
+                    </div></NavLink>
 
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        {links}
-                    </ul>
-                </div>
+
                 <div className="navbar-end">
-
+                    <div className="hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1">
+                            {links}
+                        </ul>
+                    </div>
 
                     <div tabIndex={0} role="button" className="btn mx-4 btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full outline-2 outline-white">
@@ -55,7 +55,7 @@ const NavSection = () => {
                         </div>
                     </div>
 
-                    <a className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">Login</a>
+                    <NavLink to='login' className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">Login</NavLink>
                 </div>
             </div>
 
