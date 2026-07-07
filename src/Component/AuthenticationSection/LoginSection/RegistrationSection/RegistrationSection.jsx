@@ -1,10 +1,13 @@
 //import React from 'react';
 
-import { useState } from "react";
+import { use, useState } from "react";
+import Context from "../../../AuthContext/Context/Context";
+import auth from "../../../FireBase/Firebase.init";
+import { sendEmailVerification } from "firebase/auth";
 
 const RegistrationSection = () => {
     const [error, SetError] = useState('');
-
+    const {CreateUser}=use(Context);
 
     const HandleForm = (event) => {
         event.preventDefault();
@@ -21,11 +24,22 @@ const RegistrationSection = () => {
             }
         }
 
-        const name=event.target.name.value;
-        const photo_Url=event.target.photo_url.value;
+        //const name=event.target.name.value;
+        //const photo_Url=event.target.photo_url.value;
         const email=event.target.email.value;
         const pass=event.target.pass.value;
-        console.log({name,photo_Url,email,pass});
+        //console.log({name,photo_Url,email,pass});
+        CreateUser(email,pass).then(result=>{
+            const user=result.user;
+            console.log(user);
+            sendEmailVerification(auth.currentUser).then(()=>{
+                alert(`please verify your email ${user.email}`);
+            })
+            event.target.reset();
+        }).catch(error=>{
+            //console.error(error);
+            SetError(error.code);
+        })
     }
 
 
@@ -41,23 +55,23 @@ const RegistrationSection = () => {
 
                         <label className="label text-xl font-semibold text-gray-200">Name</label>
                         <div className="flex items-center">
-                            <input id='name' type="text" className="input text-[1rem] w-full required" placeholder="Name" />
+                            <input id='name' type="text" required className="input text-[1rem] w-full" placeholder="Name" />
                         </div>
 
                         <label className="label text-xl font-semibold text-gray-200">Photo Url</label>
                         <div className="flex items-center">
-                            <input id='photo_url' type="text" className="input text-[1rem] w-full required" placeholder="Photo URL" />
+                            <input id='photo_url' type="text" className="input text-[1rem] w-full" placeholder="Photo URL" />
                         </div>
 
 
                         <label className="label text-xl font-semibold text-gray-200">Email</label>
                         <div className="flex items-center">
-                            <input id='email' type="email" className="input text-[1rem] w-full required" placeholder="Email" />
+                            <input id='email' type="email" required className="input text-[1rem] w-full" placeholder="Email" />
                         </div>
 
                         <label className="label text-xl font-semibold text-gray-200">Password</label>
                         <div className="flex items-center">
-                            <input id='pass' type="password" className="input w-full text-[1rem]" placeholder="password" required />
+                            <input id='pass' type="password" required className="input w-full text-[1rem]" placeholder="password" />
                         </div>
 
                         <div className="flex gap-2 text-white mt-1">

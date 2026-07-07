@@ -39,7 +39,7 @@ const HeroSection = () => {
                     <p className="mt-4 font-medium text-center lg:text-start text-[1.3rem] leading-10 text-gray-400">Jump into a galaxy of action, strategy, and adventure titles built for players who crave more. Discover new worlds, team up with legends, and chase victories that actually feel earned - all in one place.</p>
 
                     <div className="flex justify-center lg:justify-start pb-3">
-                        <NavLink className='mt-2 btn px-10 font-bold bg-linear-to-r from-[#2be9c8] to-[#a26bff] border-0'><span className="text-black">Explore Games</span> <span className="flex items-center text-black"><FaLongArrowAltRight className="flex mt-1" /></span></NavLink>
+                        <NavLink to='allgames' className='mt-2 btn px-10 font-bold bg-linear-to-r from-[#2be9c8] to-[#a26bff] border-0'><span className="text-black">Explore Games</span> <span className="flex items-center text-black"><FaLongArrowAltRight className="flex mt-1" /></span></NavLink>
                     </div>
                 </div>
 

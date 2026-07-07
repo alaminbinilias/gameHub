@@ -24,7 +24,7 @@ const LoginSection = () => {
 
     return (
         <div className="w-11/12 mx-auto mb-10">
-            <div className="w-full flex justify-center items-center mt-10 lg:mt-40">
+            <div className="w-full flex justify-center items-center mt-10 lg:mt-10">
                 <p className="mt-2 text-white mx-auto text-center text-3xl font-semibold">Login Now!</p>
             </div>
 
@@ -35,7 +35,7 @@ const LoginSection = () => {
                         <div className="flex items-center">
                             <span className="absolute z-10 px-3 mt-1 text-[0.9rem]"><FaUser /></span>
 
-                            <input type="email" className="input text-[1rem] w-full required px-8" placeholder="Email" />
+                            <input type="email" required className="input text-[1rem] w-full required px-8" placeholder="Email" />
                         </div>
 
                         <label className="label text-xl font-semibold text-gray-200">Password</label>
@@ -43,7 +43,7 @@ const LoginSection = () => {
                             <span className="absolute z-10 px-3 mt-1 text-[1rem]"><LuLockKeyhole /></span>
 
                             {
-                                spass === true ? <input type="text" className="input text-[1rem] w-full px-8" placeholder="password" required /> : <input type="password" className="input w-full text-[1rem] px-8" placeholder="password" required />
+                                spass === true ? <input type="text" className="input text-[1rem] w-full px-8" placeholder="password" required /> : <input type="password" required className="input w-full text-[1rem] px-8" placeholder="password" />
                             }
 
                             {
