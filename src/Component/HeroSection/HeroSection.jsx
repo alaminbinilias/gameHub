@@ -4,8 +4,13 @@ import { NavLink } from "react-router";
 import chartr from "../../assets/Picture/right.webp"
 import TextType from '../Extras/TextType/TextType';
 import { FaLongArrowAltRight } from "react-icons/fa";
+// import { use } from "react";
+// import Context from "../AuthContext/Context/Context";
 
 const HeroSection = () => {
+    //const {name}=use(Context);
+
+    //console.log(name);
     return (
         <div className="w-11/12 mx-auto pt-3">
             <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-center">

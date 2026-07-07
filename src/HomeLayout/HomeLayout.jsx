@@ -15,7 +15,7 @@ const HomeLayout = () => {
             </div>
 
 
-            <div className=" h-screen relative  flex flex-col z-20">
+            <div className="min-h-screen relative  flex flex-col z-20">
                 <nav>
                     <NavSection></NavSection>
                 </nav>

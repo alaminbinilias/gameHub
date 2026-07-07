@@ -1,5 +1,5 @@
 //import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import logo from '../../assets/Picture/logos.png'
 import './Nav.css'
 
@@ -55,7 +55,7 @@ const NavSection = () => {
                         </div>
                     </div>
 
-                    <NavLink to='login' className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">Login</NavLink>
+                    <Link to='login' className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">Login</Link>
                 </div>
             </div>
 

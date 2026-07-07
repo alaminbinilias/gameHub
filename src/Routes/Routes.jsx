@@ -6,6 +6,7 @@ import HomeLayout from "../HomeLayout/HomeLayout";
 import DynamicSection from "../Component/DynamicSection/DynamicSection";
 import AllGamesSection from "../Component/AllGamesSection/AllGamesSection";
 import LoginSection from "../Component/AuthenticationSection/LoginSection/LoginSection";
+import RegistrationSection from "../Component/AuthenticationSection/LoginSection/RegistrationSection/RegistrationSection";
 
 const router=createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router=createBrowserRouter([
             {
                 path:'/login',
                 Component:LoginSection
+            },
+            {
+                path:'/registration',
+                Component:RegistrationSection
             }
         ]
     }
