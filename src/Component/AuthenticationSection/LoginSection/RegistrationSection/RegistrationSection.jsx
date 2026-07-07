@@ -4,39 +4,52 @@ import { use, useState } from "react";
 import Context from "../../../AuthContext/Context/Context";
 import auth from "../../../FireBase/Firebase.init";
 import { sendEmailVerification } from "firebase/auth";
+import { IoMdEyeOff } from "react-icons/io";
+import { FaEye } from "react-icons/fa";
 
 const RegistrationSection = () => {
+    const [spass, Setspass] = useState(false);
     const [error, SetError] = useState('');
-    const {CreateUser}=use(Context);
+    const { CreateUser } = use(Context);
+
+
+    const HandlePassShow = () => {
+        if (spass == false) {
+            Setspass(true);
+        }
+        else {
+            Setspass(false);
+        }
+    }
 
     const HandleForm = (event) => {
         event.preventDefault();
 
-        const check=event.target.checkbtn.checked;
+        const check = event.target.checkbtn.checked;
         //console.log(check);
-        if(check===false){
+        if (check === false) {
             SetError("Please accept all term & conditions");
             return;
         }
-        else{
-            if(check===true){
+        else {
+            if (check === true) {
                 SetError("");
             }
         }
 
         //const name=event.target.name.value;
         //const photo_Url=event.target.photo_url.value;
-        const email=event.target.email.value;
-        const pass=event.target.pass.value;
+        const email = event.target.email.value;
+        const pass = event.target.pass.value;
         //console.log({name,photo_Url,email,pass});
-        CreateUser(email,pass).then(result=>{
-            const user=result.user;
+        CreateUser(email, pass).then(result => {
+            const user = result.user;
             console.log(user);
-            sendEmailVerification(auth.currentUser).then(()=>{
+            sendEmailVerification(auth.currentUser).then(() => {
                 alert(`please verify your email ${user.email}`);
             })
             event.target.reset();
-        }).catch(error=>{
+        }).catch(error => {
             //console.error(error);
             SetError(error.code);
         })
@@ -71,7 +84,11 @@ const RegistrationSection = () => {
 
                         <label className="label text-xl font-semibold text-gray-200">Password</label>
                         <div className="flex items-center">
-                            <input id='pass' type="password" required className="input w-full text-[1rem]" placeholder="password" />
+                            <input id="pass" type={spass ? 'text' : 'password'} className="input text-[1rem] w-full" placeholder="password" required />
+
+                            {
+                                spass === true ? <span onClick={HandlePassShow} className="-ml-6 text-[0.9rem]  flex justify-center items-center cursor-pointer relative"><FaEye /></span> : <span onClick={HandlePassShow} className="-ml-6 text-[0.9rem]  flex justify-center items-center cursor-pointer relative"><IoMdEyeOff /></span>
+                            }
                         </div>
 
                         <div className="flex gap-2 text-white mt-1">

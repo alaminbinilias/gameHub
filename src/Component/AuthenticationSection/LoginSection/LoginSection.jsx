@@ -1,14 +1,18 @@
 //import React from 'react';
 
-import { useState } from "react";
+import { use, useState } from "react";
 import { FaEye, FaGithub, FaGoogle, FaUser } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { LuLockKeyhole } from "react-icons/lu";
 import { Link } from "react-router";
+import Context from "../../AuthContext/Context/Context";
 
 const LoginSection = () => {
 
     const [spass, Setspass] = useState(false);
+    const { userSignIn, resetPassword, googleSignin, GitHubSignIn } = use(Context);
+    const [error, seterror] = useState('');
+    const [Email, SetEmail] = useState('');
 
     const HandlePassShow = () => {
         if (spass == false) {
@@ -22,6 +26,55 @@ const LoginSection = () => {
     //console.log(spass);
 
 
+    const Handlesign = (event) => {
+        event.preventDefault();
+        const email = event.target.email.value;
+        const pass = event.target.pass.value;
+        SetEmail(email);
+        //console.log({email,pass});
+        userSignIn(email, pass).then(result => {
+            const user = result.user;
+            console.log(user);
+            alert("Login SuccessFully");
+            event.target.reset();
+            seterror('')
+        }).catch(err => {
+            if (err.code == 'auth/invalid-credential') {
+                seterror('Please enter your correct crediantial');
+                return;
+            }
+        });
+    }
+
+
+    ///password_reset
+    const handleResetpass = () => {
+        if (Email === '') {
+            alert("Please Enter Your Email Address");
+            return;
+        }
+        else {
+            resetPassword(Email).then(alert("Please Check Your Email Address")).catch(err => seterror(err.code));
+        }
+    }
+
+    ///googleSignIN
+    const HandleGoogleSignIn = () => {
+        googleSignin().then(result => {
+            const user = result.user;
+            console.log(user);
+        }).catch(err => seterror(err.code));
+    }
+
+    //GitHubSignIn
+    const HandleGitHubSignIn = () => {
+        GitHubSignIn().then(result=>{
+            const user=result.user;
+            console.log(user);
+        }).catch(err=>seterror(err.code));
+    }
+
+
     return (
         <div className="w-11/12 mx-auto mb-10">
             <div className="w-full flex justify-center items-center mt-10 lg:mt-10">
@@ -29,36 +82,35 @@ const LoginSection = () => {
             </div>
 
             <div className="w-full flex justify-center items-center mx-auto mt-4">
-                <form>
+                <form onSubmit={Handlesign}>
                     <fieldset className="fieldset bg-gray-500 shadow-2xl border-base-300 rounded-box w-100 border p-4">
                         <label className="label text-xl font-semibold text-gray-200">Email</label>
                         <div className="flex items-center">
                             <span className="absolute z-10 px-3 mt-1 text-[0.9rem]"><FaUser /></span>
 
-                            <input type="email" required className="input text-[1rem] w-full required px-8" placeholder="Email" />
+                            <input type="email" required id='email' className="input text-[1rem] w-full required px-8" placeholder="Email" />
                         </div>
 
                         <label className="label text-xl font-semibold text-gray-200">Password</label>
                         <div className="flex items-center">
                             <span className="absolute z-10 px-3 mt-1 text-[1rem]"><LuLockKeyhole /></span>
 
-                            {
-                                spass === true ? <input type="text" className="input text-[1rem] w-full px-8" placeholder="password" required /> : <input type="password" required className="input w-full text-[1rem] px-8" placeholder="password" />
-                            }
+                            <input id="pass" type={spass ? 'text' : 'password'} className="input text-[1rem] w-full px-8" placeholder="password" required />
 
                             {
                                 spass === true ? <span onClick={HandlePassShow} className="-ml-6 text-[0.9rem]  flex justify-center items-center cursor-pointer relative"><FaEye /></span> : <span onClick={HandlePassShow} className="-ml-6 text-[0.9rem]  flex justify-center items-center cursor-pointer relative"><IoMdEyeOff /></span>
                             }
                         </div>
-                        <p className="text-[0.9rem] text-gray-300 mt-2 cursor-pointer hover:text-sky-400 underline">Forgot Password</p>
+                        <p onClick={handleResetpass} className="text-[0.9rem] text-gray-300 mt-2 cursor-pointer hover:text-sky-400 underline">Forgot Password</p>
                         <button className="btn btn-success mt-1">Login</button>
+                        <p className="text-red-300 mt-1">{error}</p>
                         <p className="text-white text-center text-[1rem] mt-1">Don't have account? <Link to='/registration' ><span className="text-sky-400 font-semibold cursor-pointer underline">Sign Up</span></Link> </p>
 
 
                         <p className="text-xl text-white text-center w-full">----------or Connect With----------</p>
                         <div className="flex gap-4 justify-center mt-2">
-                            <span className="text-2xl cursor-pointer"><FaGoogle /></span>
-                            <span className="text-2xl cursor-pointer"><FaGithub /></span>
+                            <span onClick={HandleGoogleSignIn} className="text-2xl cursor-pointer"><FaGoogle /></span>
+                            <span onClick={HandleGitHubSignIn} className="text-2xl cursor-pointer"><FaGithub /></span>
                             {/* <span className="text-2xl cursor-pointer"><FaLinkedin /></span> */}
                         </div>
                     </fieldset>

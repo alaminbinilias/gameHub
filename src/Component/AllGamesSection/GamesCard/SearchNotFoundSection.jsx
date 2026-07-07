@@ -2,7 +2,7 @@
 
 const SearchNotFoundSection = () => {
   return (
-    <div className='lg:w-350 lg:h-100 mx-auto flex items-center border-white'>
+    <div className='lg:w-full flex justify-center items-center lg:h-100 mx-auto'>
         {/* <p className=' text-3xl lg:text-3xl w-screen text-white text-center'>
           Your Games are Not Found <span>&#128531;</span>
         </p> */}

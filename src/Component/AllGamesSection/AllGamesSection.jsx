@@ -49,9 +49,12 @@ const AllGamesSection = () => {
 
       <section className="w-full h-full GamesSection grid grid-cols-1 lg:grid-cols-4 gap-4 cursor-pointer mt-10 mb-10">
         {
-          data.length == 0 ? <SearchNotFoundSection></SearchNotFoundSection> : data.map(game => <GamesCard key={game.id} game={game} ></GamesCard>)
+           data.map(game => <GamesCard key={game.id} game={game} ></GamesCard>)
         }
       </section>
+      {
+        data.length===0 && <SearchNotFoundSection></SearchNotFoundSection>
+      }
 
     </div>
   )
