@@ -25,7 +25,7 @@ const PopularSection = () => {
 
     //console.log(Data);
     const filterData = Data.filter(item => item.popular === true);
-    console.log(filterData);
+    //console.log(filterData);
     return (
         <div className="w-11/12 mx-auto">
             <p className='text-white text-center font-semibold mt-9 lg:mt-0 text-5xl'>Popular Games</p>

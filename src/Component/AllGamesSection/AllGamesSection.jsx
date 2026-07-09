@@ -1,6 +1,6 @@
 //import React from 'react';
 
-import { useLoaderData } from "react-router";
+import { NavLink, useLoaderData } from "react-router";
 import GamesCard from "./GamesCard/GamesCard";
 import { useState } from "react";
 import SearchNotFoundSection from "./GamesCard/SearchNotFoundSection";
@@ -49,7 +49,7 @@ const AllGamesSection = () => {
 
       <section className="w-full h-full GamesSection grid grid-cols-1 lg:grid-cols-4 gap-4 cursor-pointer mt-10 mb-10">
         {
-           data.map(game => <GamesCard key={game.id} game={game} ></GamesCard>)
+           data.map(game => <NavLink to={`/games/details/${game.id}`}><GamesCard key={game.id} game={game} ></GamesCard></NavLink>)
         }
       </section>
       {

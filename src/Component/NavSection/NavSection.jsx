@@ -2,9 +2,21 @@
 import { Link, NavLink } from 'react-router';
 import logo from '../../assets/Picture/logos.png'
 import './Nav.css'
+import { use } from 'react';
+import Context from '../AuthContext/Context/Context';
 
 
 const NavSection = () => {
+
+    const {CurrentUser,SignOutUser}=use(Context);
+    //console.log(CurrentUser);
+
+    const HandleSignOut=()=>{
+        //console.log("Clicked")
+        SignOutUser().then(alert("SignOut Successfully")).catch(err=>err);
+    }
+
+
 
     const links = <>
 
@@ -49,13 +61,16 @@ const NavSection = () => {
 
                     <div tabIndex={0} role="button" className="btn mx-4 btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full outline-2 outline-white">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                            {
+                                CurrentUser? <img src={CurrentUser.photoURL} alt="" /> :<img src="https://static.vecteezy.com/system/resources/previews/041/878/188/non_2x/user-profile-login-or-access-authentication-icon-illustration-image-vector.jpg"
+                                alt="" />
+                            }
                         </div>
                     </div>
 
-                    <Link to='login' className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">Login</Link>
+                    {
+                        CurrentUser? <Link to='/' onClick={HandleSignOut} className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">{CurrentUser.displayName}</Link>  : <Link to='login' className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">LOGIN</Link>
+                    }
                 </div>
             </div>
 

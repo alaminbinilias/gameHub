@@ -4,7 +4,7 @@ import { use, useState } from "react";
 import { FaEye, FaGithub, FaGoogle, FaUser } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { LuLockKeyhole } from "react-icons/lu";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Context from "../../AuthContext/Context/Context";
 
 const LoginSection = () => {
@@ -25,9 +25,13 @@ const LoginSection = () => {
 
     //console.log(spass);
 
+    const location=useLocation();
+    //console.log(location);
+    const navigate=useNavigate();
 
     const Handlesign = (event) => {
         event.preventDefault();
+        seterror('');
         const email = event.target.email.value;
         const pass = event.target.pass.value;
         SetEmail(email);
@@ -37,7 +41,8 @@ const LoginSection = () => {
             console.log(user);
             alert("Login SuccessFully");
             event.target.reset();
-            seterror('')
+            navigate(location.state);
+            seterror('');
         }).catch(err => {
             if (err.code == 'auth/invalid-credential') {
                 seterror('Please enter your correct crediantial');
@@ -63,6 +68,7 @@ const LoginSection = () => {
         googleSignin().then(result => {
             const user = result.user;
             console.log(user);
+            seterror('');
         }).catch(err => seterror(err.code));
     }
 
@@ -71,6 +77,7 @@ const LoginSection = () => {
         GitHubSignIn().then(result=>{
             const user=result.user;
             console.log(user);
+            seterror('');
         }).catch(err=>seterror(err.code));
     }
 

@@ -15,11 +15,11 @@ const HomeLayout = () => {
             </div>
 
 
-            <div className="min-h-screen relative  flex flex-col z-20">
+            <div className="min-h-screen relative flex flex-col z-20">
                 <nav>
                     <NavSection></NavSection>
                 </nav>
-                <main className="flex-1">
+                <main className=" w-full h-full flex-1">
                     <Outlet></Outlet>
                 </main>
                 <section className="">

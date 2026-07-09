@@ -10,7 +10,7 @@ import { FaEye } from "react-icons/fa";
 const RegistrationSection = () => {
     const [spass, Setspass] = useState(false);
     const [error, SetError] = useState('');
-    const { CreateUser } = use(Context);
+    const { CreateUser,Update_Name_Photo } = use(Context);
 
 
     const HandlePassShow = () => {
@@ -37,8 +37,8 @@ const RegistrationSection = () => {
             }
         }
 
-        //const name=event.target.name.value;
-        //const photo_Url=event.target.photo_url.value;
+        const name=event.target.name.value;
+        const photo_Url=event.target.photo_url.value;
         const email = event.target.email.value;
         const pass = event.target.pass.value;
         //console.log({name,photo_Url,email,pass});
@@ -46,6 +46,7 @@ const RegistrationSection = () => {
             const user = result.user;
             console.log(user);
             sendEmailVerification(auth.currentUser).then(() => {
+                Update_Name_Photo(name,photo_Url).then(result=>result).catch(err=>SetError(err));
                 alert(`please verify your email ${user.email}`);
             })
             event.target.reset();
