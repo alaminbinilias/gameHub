@@ -9,6 +9,7 @@ const Provider = ({children}) => {
 
     const [CurrentUser,setCurrentUser]=useState(null);
     const [DATA,SetDATA]=useState([]);
+    const [Loading,setLoading]=useState(true);
 
     useEffect(()=>{
         fetch('/GamesData/Data.json').then(res=>res.json()).then(data=>SetDATA(data));
@@ -67,6 +68,7 @@ const Provider = ({children}) => {
             else{
                 setCurrentUser(null);
             }
+            setLoading(false);
         });
         return ()=>unsubscribe();
     },[])
@@ -84,7 +86,9 @@ const Provider = ({children}) => {
         SignOutUser,
         Update_Name_Photo,
         DATA,
-        SetDATA
+        SetDATA,
+        Loading,
+        setLoading
     }
 
 

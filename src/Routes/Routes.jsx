@@ -9,11 +9,14 @@ import RegistrationSection from "../Component/AuthenticationSection/LoginSection
 import ProtectedRoutes from "../Component/ProtectedRoutes/ProtectedRoutes";
 import AllGamesSection from "../Component/AllGamesSection/AllGamesSection";
 import GameDetails from "../Component/GameDetails/GameDetails";
+import PageNotFound from "../Component/PageNotFound/PageNotFound";
+import ProfileDetailsUpdate from "../Component/ProfileDetailsUpdate/ProfileDetailsUpdate";
 
 const router = createBrowserRouter([
     {
         path: '/',
         Component: HomeLayout,
+        errorElement:<PageNotFound></PageNotFound>,
         children: [
             {
                 index: true,
@@ -37,8 +40,16 @@ const router = createBrowserRouter([
                 Component: RegistrationSection
             },
             {
-                path:'/games/details/:id',
-                Component:GameDetails
+                path: '/games/details/:id',
+                element: <ProtectedRoutes>
+                    <GameDetails></GameDetails>
+                </ProtectedRoutes>
+            },
+            {
+                path:'Profile/details',
+                element:<ProtectedRoutes>
+                    <ProfileDetailsUpdate></ProfileDetailsUpdate>
+                </ProtectedRoutes>
             }
         ]
     }

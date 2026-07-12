@@ -28,7 +28,7 @@ const PopularSection = () => {
     //console.log(filterData);
     return (
         <div className="w-11/12 mx-auto">
-            <p className='text-white text-center font-semibold mt-9 lg:mt-0 text-5xl'>Popular Games</p>
+            <p className='text-white text-center font-semibold mt-9 lg:mt-0 text-5xl'>Tranding Games</p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 bg-transparent gap-6">
                 <div className="left-Section mt-20 h-100">

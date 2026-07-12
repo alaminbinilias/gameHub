@@ -34,7 +34,8 @@ const GameDetails = () => {
                 </div>
             </div>
             <div>
-                <p className="mt-4 px-2 text-gray-300 font-medium leading-12 text-wrap text-2xl">{filterData?.description}</p>
+                <p className="mt-3 ml-3 font-semibold text-2xl text-[#fa983a]">Description</p>
+                <p className="mt-3 px-2 text-gray-300 font-medium leading-12 text-wrap text-2xl mb-10 lg:mb-0">{filterData?.description}</p>
             </div>
         </div>
     );

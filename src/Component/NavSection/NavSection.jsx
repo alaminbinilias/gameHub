@@ -4,26 +4,28 @@ import logo from '../../assets/Picture/logos.png'
 import './Nav.css'
 import { use } from 'react';
 import Context from '../AuthContext/Context/Context';
+import Swal from 'sweetalert2';
 
 
 const NavSection = () => {
 
-    const {CurrentUser,SignOutUser}=use(Context);
+    const { CurrentUser, SignOutUser } = use(Context);
     //console.log(CurrentUser);
 
-    const HandleSignOut=()=>{
+    const HandleSignOut = () => {
         //console.log("Clicked")
-        SignOutUser().then(alert("SignOut Successfully")).catch(err=>err);
+        SignOutUser().then(CurrentUser && Swal.fire({
+            title: "Good job!",
+            text: "Logout Successfully",
+            icon: "success"
+        }).catch(err => err));
     }
-
-
-
     const links = <>
 
         <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><NavLink to='/'>Home</NavLink></li>
         <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><NavLink to='allgames'>Games</NavLink></li>
         <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>About</a></li>
-        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a>Support</a></li>
+        <li className="text-xl font-semibold lg:hover:text-[#2be9c8] lg:text-white"><a href='#support'>Support</a></li>
 
     </>
     return (
@@ -59,17 +61,43 @@ const NavSection = () => {
                         </ul>
                     </div>
 
-                    <div tabIndex={0} role="button" className="btn mx-4 btn-ghost btn-circle avatar">
+                    {/* Profile */}
+                    {/* <div tabIndex={0} role="button" className="btn mx-4 btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full outline-2 outline-white">
                             {
-                                CurrentUser? <img src={CurrentUser.photoURL} alt="" /> :<img src="https://static.vecteezy.com/system/resources/previews/041/878/188/non_2x/user-profile-login-or-access-authentication-icon-illustration-image-vector.jpg"
-                                alt="" />
+                                CurrentUser ? <img src={CurrentUser.photoURL} alt="" /> : <img src="https://static.vecteezy.com/system/resources/previews/041/878/188/non_2x/user-profile-login-or-access-authentication-icon-illustration-image-vector.jpg"
+                                    alt="" />
                             }
                         </div>
+                    </div> */}
+
+
+                    <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn mx-2 btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                {
+                                    CurrentUser ? <img src={CurrentUser.photoURL} alt="" /> : <img src="https://static.vecteezy.com/system/resources/previews/041/878/188/non_2x/user-profile-login-or-access-authentication-icon-illustration-image-vector.jpg"
+                                        alt="" />
+                                }
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex="-1"
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            <li>
+                                <NavLink to='Profile/details' className="justify-between">
+                                    Profile
+                                </NavLink>
+                            </li>
+                            <li><a onClick={HandleSignOut}>Logout</a></li>
+                        </ul>
                     </div>
 
+                    {/* {
+                        CurrentUser ? <Link to='/' onClick={HandleSignOut} className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">{CurrentUser.displayName}</Link> : <Link to='login' className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">LOGIN</Link>
+                    } */}
                     {
-                        CurrentUser? <Link to='/' onClick={HandleSignOut} className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">{CurrentUser.displayName}</Link>  : <Link to='login' className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">LOGIN</Link>
+                        CurrentUser ? <button className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">{CurrentUser?.displayName}</button> : <Link to='login' className="btn btn-accent px-7 py-5 font-bold text-[1rem] text-white">LOGIN</Link>
                     }
                 </div>
             </div>

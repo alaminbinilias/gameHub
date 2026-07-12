@@ -10,7 +10,7 @@ const HomeLayout = () => {
     return (
         <div className="min-h-screen relative z-19">
 
-            <div className="imgs z-0 absolute min-h-screen border- w-full bg-cover bg-center bg-no-repeat"
+            <div className="imgs z-10 absolute min-h-screen border- w-full bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${hero})`, height:'100%' }}>                
             </div>
 
@@ -22,9 +22,9 @@ const HomeLayout = () => {
                 <main className=" w-full h-full flex-1">
                     <Outlet></Outlet>
                 </main>
-                <section className="">
+                <footer className="relative flex flex-col z-2">
                     <Footer></Footer>
-                </section>
+                </footer>
             </div>
         </div>
     );

@@ -6,11 +6,12 @@ import auth from "../../../FireBase/Firebase.init";
 import { sendEmailVerification } from "firebase/auth";
 import { IoMdEyeOff } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const RegistrationSection = () => {
     const [spass, Setspass] = useState(false);
     const [error, SetError] = useState('');
-    const { CreateUser,Update_Name_Photo } = use(Context);
+    const { CreateUser, Update_Name_Photo } = use(Context);
 
 
     const HandlePassShow = () => {
@@ -37,18 +38,25 @@ const RegistrationSection = () => {
             }
         }
 
-        const name=event.target.name.value;
-        const photo_Url=event.target.photo_url.value;
+        const name = event.target.name.value;
+        const photo_Url = event.target.photo_url.value;
         const email = event.target.email.value;
         const pass = event.target.pass.value;
         //console.log({name,photo_Url,email,pass});
         CreateUser(email, pass).then(result => {
             const user = result.user;
-            console.log(user);
+            user;
+            Swal.fire({
+                title: "Great!",
+                text: "Your Registration Completed",
+                icon: "success"
+            });
+            //console.log(user);
             sendEmailVerification(auth.currentUser).then(() => {
-                Update_Name_Photo(name,photo_Url).then(result=>result).catch(err=>SetError(err));
+                Update_Name_Photo(name, photo_Url).then(result => result).catch(err => SetError(err));
                 alert(`please verify your email ${user.email}`);
             })
+
             event.target.reset();
         }).catch(error => {
             //console.error(error);
@@ -93,7 +101,7 @@ const RegistrationSection = () => {
                         </div>
 
                         <div className="flex gap-2 text-white mt-1">
-                            <input id='checkbtn' type="checkbox" className="checkbox checkbox-md bg-white" />
+                            <input id='checkbtn' type="checkbox" className="checkbox checkbox-md bg-white text-green-500" />
                             <p className="text-[1rem]">Accept All term & Conditions</p>
                         </div>
 
