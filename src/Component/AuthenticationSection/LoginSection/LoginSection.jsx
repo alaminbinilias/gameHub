@@ -111,7 +111,8 @@ const HandleGoogleSignIn = () => {
 const HandleGitHubSignIn = () => {
     GitHubSignIn().then(result => {
         const user = result.user;
-        console.log(user);
+        //console.log(user);
+        user;
         {
             location.state ? navigate(location.state) : navigate('/')
         }

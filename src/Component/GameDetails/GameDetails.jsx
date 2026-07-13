@@ -7,12 +7,12 @@ import { FaStar } from "react-icons/fa6";
 
 const GameDetails = () => {
     const { DATA } = use(Context);
-    console.log(DATA);
+    //console.log(DATA);
 
     const { id } = useParams();
     //console.log(id);
     const filterData = DATA.find(item => item.id == id);
-    console.log(filterData);
+    //console.log(filterData);
 
     return (
         <div className="w-11/12 h-full mx-auto">
@@ -30,7 +30,7 @@ const GameDetails = () => {
                         }
                     </div>
                     <p className="mt-4 flex items-center text-xl text-white gap-2"><span className="text-yellow-300"><FaStar size={25} /></span>{filterData?.ratings}</p>
-                    <Link to={filterData?.downloadLink} className="btn w-full mt-4 px-10 bg-[#2e86de] border-[#2e86de]">Download</Link>
+                    <Link target="_blank" to={filterData?.downloadLink} className="btn w-full mt-4 px-10 bg-[#2e86de] border-[#2e86de]">Download</Link>
                 </div>
             </div>
             <div>

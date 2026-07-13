@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyByX1l-M3xXjTZtRnHdMk47_YTetqBFN2c",
-  authDomain: "gamehub-347c5.firebaseapp.com",
-  projectId: "gamehub-347c5",
-  storageBucket: "gamehub-347c5.firebasestorage.app",
-  messagingSenderId: "583152764687",
-  appId: "1:583152764687:web:20c6bcc1b1d64c66b1e07a"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 
 
 
-const auth=getAuth(app);
+const auth = getAuth(app);
 
 
 export default auth;
